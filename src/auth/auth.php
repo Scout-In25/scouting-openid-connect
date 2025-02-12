@@ -261,7 +261,7 @@ class Auth {
             wp_safe_redirect(home_url());
             exit;
         } else if (get_option('scouting_oidc_login_redirect') == "custom_ingelogd") {
-            wp_safe_redirect(home_url('/ingelogd));
+            wp_safe_redirect(home_url('/ingelogd'));
             exit;
         }
     }
