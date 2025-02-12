@@ -232,6 +232,7 @@ class Settings_General
             'default' => __('Default (no action)', 'scouting-openid-connect'),
             'frontpage' => __('Frontpage', 'scouting-openid-connect'),
             'dashboard' => __('Dashboard', 'scouting-openid-connect'),
+            'custom_ingelogd' => __('Custom Ingelogd', 'scouting-openid-connect'),
         );
         $value = get_option('scouting_oidc_login_redirect');
         
