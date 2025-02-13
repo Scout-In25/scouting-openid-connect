@@ -158,7 +158,7 @@ class Settings_General
     // Sanitize the login redirect option
     public function scouting_oidc_sanitize_login_redirect_option($input) {
         // Define allowed options
-        $valid = ['default', 'frontpage', 'dashboard'];
+        $valid = ['default', 'frontpage', 'dashboard', 'custom_ingelogd'];
         
         // Return the input if it’s a valid option; otherwise, default to 'default'
         return in_array($input, $valid, true) ? $input : 'default';
