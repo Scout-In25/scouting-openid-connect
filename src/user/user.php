@@ -122,7 +122,7 @@ class User {
     public function scouting_oidc_user_update_meta(int $user_id) {
         update_user_meta($user_id, 'first_name', $this->firstName);
         update_user_meta($user_id, 'scouting_oidc_infix', $this->infix);
-        update_user_meta($user_id, 'last_name', $this->familyName);
+        update_user_meta($user_id, 'last_name', $this->infix . $this->familyName);
         update_user_meta($user_id, 'show_admin_bar_front', 'false');
 
         if (get_option('scouting_oidc_user_display_name')) {
