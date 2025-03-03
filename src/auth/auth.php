@@ -166,7 +166,7 @@ class Auth {
         if (!$this->oidc_client->hasstate(sanitize_text_field(wp_unslash($_GET['state'])))) {
             $this->oidc_client->unsetStatesAndNonce();
 
-            $hint = rawurlencode(__('State is invalid', 'scouting-openid-connect'));
+            $hint = rawurlencode("Er ging iets mis met het inloggen! Probeer het nog een keer door op de groene knop te drukken!");
 
             $redirect_url = esc_url_raw(wp_login_url() . '?login=failed&error_description=error&hint=' . $hint . '&message=state_invalid');
             wp_safe_redirect($redirect_url);
@@ -252,8 +252,13 @@ class Auth {
         return '<div id="login_error" class="notice notice-error"><p><strong>Error: </strong>' . esc_html($hint) . '</p></div>';
     }
 
-    // Redirect after login based on settings
-    public function scouting_oidc_auth_login_redirect() {
+    public function scouting_oidc_auth_login_redirect($user_login, $user) {
+        $username_prefix = get_option('scouting_oidc_user_name_prefix', '');
+    
+        if ($username_prefix && strpos($user_login, $username_prefix) !== 0) {
+            return;
+        }
+    
         if (get_option('scouting_oidc_login_redirect') == "dashboard") {
             wp_safe_redirect(admin_url());
             exit;

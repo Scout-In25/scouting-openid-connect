@@ -116,7 +116,7 @@ add_filter('safe_style_css', function( $styles ) {
 });
 
 // Add login redirect
-add_action('wp_login', [$scouting_oidc_auth, 'scouting_oidc_auth_login_redirect']);
+add_action('wp_login', [$scouting_oidc_auth, 'scouting_oidc_auth_login_redirect'], 10, 2);
 
 // Add logout redirect
 add_action('wp_logout', [$scouting_oidc_auth, 'scouting_oidc_auth_logout_redirect']);
